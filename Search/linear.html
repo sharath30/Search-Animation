@@ -1,0 +1,246 @@
+
+
+
+
+           <!doctype html>
+		   <html>
+		   
+		   <head>
+		   
+		     <title>Linear Search and Binary Search</title>
+			 
+			 <style>
+			 		
+					#container ul
+					{
+						list-style-type: none;
+						padding: 0px;
+						margin: 0px;
+					}
+					
+					#container ul li
+					{
+						float:left;
+						width: 90px;
+						padding: 30px 0px;
+						background: blue;
+						color : #fff;
+						margin-left: 10px;
+						text-align:center;
+						font-weight: bold;
+						border : #fff 2px;
+					}
+					
+					.pointer
+					{
+						width : 50px;
+						height : 50px;
+						background : red;
+						border-radius : 100%;
+						border: solid #000 2px;
+						position : absolute;
+						text-align:center;
+						font-size:36px;
+						
+						top : 170px;
+						left : 30px;
+						transition : 10s;
+					}
+			  
+			 
+			  </style>
+			 
+			 
+			 </head> 
+			 
+			 
+			 <body>
+			 
+			
+						<div id="wrapper">
+						
+										<header>
+										
+										
+										
+										
+										</header>
+										
+										
+										
+										
+										<section>
+										
+												
+												
+												<table>
+												
+															
+														<tr>
+																
+																<th colspan="2">How Many Elements u want 2 Generate ???</th>
+														
+																
+														</tr>
+														
+														
+														
+														<tr>
+																
+																<td><input type="text" id="txt1"></td>
+                                                                
+                                                                <td> <button onClick="initialize()">Generate</button> </td>
+														
+																
+														</tr>
+                                                        
+                                                        
+                                                        <tr>
+                                                        
+                                        <td>Enter the Element 2 search </td>
+																
+										<td><input type="text" id="txt2"></td>
+                                                                
+                                                                
+														
+																
+														</tr>
+														
+														
+														
+														
+														<tr>
+																
+																
+														
+																<td> <button onClick="linearSearch()"> Linear Search </button> </td>
+																
+																<!--<td> <button onClick="binarySearch()"> Binary Search </button></td>-->
+														</tr>
+														
+														
+														
+														
+												
+												</table>
+                                                
+                                                
+                                                
+                                                <div id="container">
+                                                
+                                                	<!--<ul>
+                                                    
+                                                    	<li> dhghghg </li>
+                                                        
+                                                        <li> dhghghg </li>
+                                                        
+                                                        
+                                                        <li> dhghghg </li>
+                                                        
+                                                      </ul>-->
+                                                
+                                                
+                                                
+                                                </div>
+										
+										
+										
+										</section>
+									
+								
+                                <div class="pointer" id="pointer">
+                                
+                                			
+                                            &uarr;
+                                
+                                
+                                </div>
+	      
+		   
+							
+						</div>	
+			 
+		   				
+                        <script>
+						
+							
+							function initialize()
+							{
+								
+								 num = parseInt(document.getElementById('txt1').value);
+								
+								
+								
+								
+										 a = [];
+										
+										 x = "<ul>"
+										
+											for(var i=0;i<num;i++)
+											{
+												
+									a[i] = Math.floor((Math.random() * 1000) + 1);
+										
+										
+									x += "<li>" + a[i] + "</li>";		
+									//document.getElementById('l').id = "l" + i;
+											}
+										
+										x += "</ul>";
+										
+										
+							document.getElementById('container').innerHTML = x;
+								
+								}
+						
+						
+						
+						
+						
+						
+						
+									
+									function linearSearch()
+									{
+										
+										x = parseInt(document.getElementById('txt2').value);
+										
+										ptr = document.getElementById('pointer');
+										
+										
+										var pos = -1;
+										var myVar;
+
+										for(i=0; i<num; i++)
+										{
+											
+											
+											ptr.style.left = ((i * 100) + 30) + "px";
+										
+			
+
+
+											
+											if( a[i] == x )
+											{
+												
+																				
+		  
+											  pos = i;
+											  break;	
+											 
+											}
+                                        
+										}
+								
+										
+									}
+									
+									
+
+						
+						</script>
+		 
+           </body>	
+
+           </html> 		   

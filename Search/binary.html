@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>   
+<title>
+Binary Search
+</title>
+<style>
+#head1
+{
+font-size : 20px;
+color : red ;
+}
+#wrapper{
+background : orange ;
+height : 800px ;
+width : 1100px ;}
+#container ul
+{
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+					
+#container ul li
+{
+	float:left;
+	width: 90px;
+	padding: 30px 0px;
+	background: blue;
+	color : #fff;
+	margin-left: 10px;
+	text-align:center;
+	font-weight: bold;
+	border : #fff 2px;
+}
+	
+.pointer
+{
+	width : 50px;
+	height : 50px;
+	border-radius : 100%;
+	border: solid #000 2px;
+	position : absolute;
+	text-align:center;
+	font-size:15px;
+	padding : 10px;
+	top : 190px;
+	
+}
+#p1
+{
+left : 30px;
+background : red;
+webkit-transition : webki-transform 10s;
+	transition : transform 10s;
+}			
+#p2
+{
+left: 130px;
+background : blue ;
+webkit-transition : webki-transform 10s;
+	transition : transform 10s;
+}
+#p3
+{
+left : 230px;
+background : green ;
+webkit-transition : webki-transform 10s;
+	transition : transform 10s;
+}
+
+</style> 	 
+</head> 			 	 
+<body>
+<div id="wrapper">											
+<table>
+<tr>
+<th id="head1">Enter elements</th>							
+</tr>																					
+<tr>														
+<td><input type="text" id="txt1"></td>
+<td> <button onClick="insert()">add</button> </td>
+<td> <button onClick="initialize()">generate</button> </td>											
+</tr>                                                                                                                
+<tr>                                                        
+<td>Enter the Element to be searched</td>
+<td colspan="2"><input type="text" id="txt2"></td>                                                                            
+</tr>
+<tr>																																																			
+<td> <button onClick="binarySearch()"> Binary Search </button></td>
+<td id="result"></td>
+</tr>
+<tr>
+</tr>
+</table>                                                                                               
+<div id="container">
+</div>
+
+<div class="pointer" id="p1">
+low
+</div>
+
+
+<div class="pointer" id="p2" >
+mid
+</div>
+
+
+
+ <div class="pointer" id="p3">                              
+high
+</div>
+
+
+</div>
+<script>
+				var max = 10;
+				var count = 0;
+				var a = [];
+				var position = -1;
+				document.getElementById('p1').style.transition = "all 2s";
+				document.getElementById('p2').style.transition = "all 2s";
+				document.getElementById('p3').style.transition = "all 2s";
+				function insert()
+				{
+					
+					num = parseInt(document.getElementById('txt1').value);
+					a[count]=num;
+					count++;
+					initialize();
+				}
+				var p,q,r;
+				function initialize()
+				{		
+					var i,j,k;
+					 
+					 		
+					 
+					/* for(var i=0;i<num;i++)
+					{
+					a[i] = Math.floor((Math.random() * 100) + 1);
+					}
+					a.sort();*/
+					x = "<ul>";
+					for(i=0;i<count;i++)
+					{
+					x += "<li id='l'>" + a[i] + "</li>";		
+									
+					}
+					x += "</ul>";
+					document.getElementById('container').innerHTML = x;
+					run()
+					
+				}
+				
+				function run()
+				{		
+					 var pos;
+					 low = 0;
+					 high = count-1 ;
+					 mid = (low+high)/2;
+					 
+					 pos = ((low * 100) + 30)+"px" ;
+					 document.getElementById('p1').innerHTML = "low<br/>"+low+"<br/>"+a[low];
+					 document.getElementById('p1').style.left = pos+"px";
+					 
+					for(q=low;q<=mid;q++)
+					{
+					document.getElementById('p2').style.left = ((q * 100) + 30)+"px" ;
+					document.getElementById('p2').innerHTML = "mid<br/>"+q+"<br/>"+a[q];
+					for(i=0;i<max;i++)
+					{
+					for(j=0;j<max;j++)
+					{
+					for(k=0;k<max;k++)
+					{}
+					}
+					}
+					}
+					
+					for(r=low;r<=high;r++)
+					{
+					document.getElementById('p3').style.left = ((r * 100) + 30)+"px" ;
+					document.getElementById('p3').innerHTML = "high<br/>"+r+"<br/>"+a[r];
+					for(i=0;i<max;i++)
+					{
+					for(j=0;j<max;j++)
+					{
+					for(k=0;k<max;k++)
+					{}
+					}
+					}
+					}
+			}	
+				
+				function binarySearch()
+				{
+						 res = document.getElementById('result');
+						 x = document.getElementById('txt2').value; 
+						binary(x,0,count-1)
+						if(position==-1)
+						res.innerHTML = "Element not found";
+						else
+						res.innerHTML = "Element "+x+"  found at position  "+(pos+1) ;
+				}
+				
+				function  binary(key,low,high)
+				{
+						
+						if(low <= high) 
+						{
+						mid = parseInt((low+high)/2);
+						document.getElementById('p1').style.left = ((low * 100) + 30)+"px" ;
+						document.getElementById('p1').innerHTML = "low<br/>"+low+"<br/>"+a[low];
+						document.getElementById('p2').style.left = ((mid* 100) + 30)+"px" ;
+						document.getElementById('p2').innerHTML = "mid<br/>"+mid+"<br/>"+a[mid];
+						document.getElementById('p3').style.left = ((high* 100) + 30)+"px" ;
+						document.getElementById('p3').innerHTML = "high<br/>"+high+"<br/>"+a[high];
+						setTimeout('binary',3000);
+						if(key < a[mid])
+						binary(key,low,mid-1);
+						else if(key>a[mid])
+						binary(key,mid+1,high);
+						else
+						position = mid ;
+						}
+						
+				
+				}
+				
+				
+				
+				
+</script>		
+</body>
+</html>	
